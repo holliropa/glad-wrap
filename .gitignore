@@ -5,7 +5,7 @@
 # Prerequisites
 *.d
 
-# Compiled Object files
+# Compiled Handle files
 *.slo
 *.lo
 *.o
