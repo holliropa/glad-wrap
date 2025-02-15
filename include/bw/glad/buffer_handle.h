@@ -1,10 +1,10 @@
 #pragma once
 
 #include "config.h"
-#include "gl_handle.h"
+#include "handle.h"
 
 namespace OGLWRAP_NAMESPACE {
-    class BufferHandle : public GLHandle {
+    class BufferHandle : public Handle {
     public:
         explicit BufferHandle(GLuint handle) {
             handle_ = handle;

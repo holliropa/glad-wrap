@@ -1,10 +1,10 @@
 #pragma once
 
 #include "config.h"
-#include "gl_handle.h"
+#include "handle.h"
 
 namespace OGLWRAP_NAMESPACE {
-    class ProgramHandle : public GLHandle {
+    class ProgramHandle : public Handle {
     public:
         explicit ProgramHandle(GLuint handle) {
             handle_ = handle;

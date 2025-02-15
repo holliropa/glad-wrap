@@ -1,11 +1,11 @@
 #pragma once
 
 #include "config.h"
-#include "gl_handle.h"
+#include "handle.h"
 #include "enums/shader_type.h"
 
 namespace OGLWRAP_NAMESPACE {
-    class ShaderHandle : public GLHandle {
+    class ShaderHandle : public Handle {
     public:
         explicit ShaderHandle(GLuint handle) {
             handle_ = handle;

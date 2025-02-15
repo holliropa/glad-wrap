@@ -76,7 +76,7 @@ namespace OGLWRAP_NAMESPACE {
 
         State state() const { return state_; }
 
-        const GLHandle &expose() const { return program_; }
+        const Handle &expose() const { return program_; }
 
     private:
         ProgramHandle program_;

@@ -30,7 +30,7 @@ namespace OGLWRAP_NAMESPACE {
 
         [[nodiscard]] GLint size() const;
 
-        [[nodiscard]] const GLHandle &expose() const { return handle_; }
+        [[nodiscard]] const Handle &expose() const { return handle_; }
 
     private:
         BufferHandle handle_;

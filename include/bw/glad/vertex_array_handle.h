@@ -1,10 +1,10 @@
 #pragma once
 
 #include "config.h"
-#include "gl_handle.h"
+#include "handle.h"
 
 namespace OGLWRAP_NAMESPACE {
-    class VertexArrayHandle : public GLHandle {
+    class VertexArrayHandle : public Handle {
     public:
         explicit VertexArrayHandle(GLuint handle) {
             handle_ = handle;

@@ -4,29 +4,29 @@
 #include <utility>
 
 namespace OGLWRAP_NAMESPACE {
-    class GLHandle {
+    class Handle {
     public:
         explicit operator GLuint() const { return handle_; }
 
-        GLHandle(const GLHandle &) = delete;
+        Handle(const Handle &) = delete;
 
-        GLHandle &operator=(const GLHandle &) = delete;
+        Handle &operator=(const Handle &) = delete;
 
-        GLHandle(GLHandle &&other) noexcept
+        Handle(Handle &&other) noexcept
                 : handle_{other.handle_},
                   ownership_{other.ownership_} {
             other.handle_ = 0;
             other.ownership_ = false;
         }
 
-        GLHandle &operator=(GLHandle &&other) noexcept {
+        Handle &operator=(Handle &&other) noexcept {
             handle_ = std::exchange(other.handle_, 0);
             ownership_ = std::exchange(other.ownership_, false);
 
             return *this;
         }
 
-        virtual ~GLHandle() = default;
+        virtual ~Handle() = default;
 
         [[nodiscard]]bool hasOwnership() const { return ownership_; }
 
@@ -34,6 +34,6 @@ namespace OGLWRAP_NAMESPACE {
         GLuint handle_ = 0;
         bool ownership_ = false;
 
-        GLHandle() = default;
+        Handle() = default;
     };
 }

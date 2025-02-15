@@ -47,7 +47,7 @@ namespace OGLWRAP_NAMESPACE {
             state_ = status == GL_TRUE ? kCompileSuccessful : kCompileFailure;
         }
 
-        const GLHandle &expose() const {
+        const Handle &expose() const {
             return shader_handle_;
         }
     };

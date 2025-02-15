@@ -14,7 +14,7 @@ namespace OGLWRAP_NAMESPACE {
 
         explicit VertexArray(GLuint handle) : handle_{handle} {}
 
-        [[nodiscard]] const GLHandle &expose() const { return handle_; }
+        [[nodiscard]] const Handle &expose() const { return handle_; }
 
     private:
         VertexArrayHandle handle_;
