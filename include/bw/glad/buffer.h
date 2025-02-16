@@ -6,7 +6,7 @@
 #include "enums/buffer_type.h"
 #include "enums/buffer_usage.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     template<BufferType BUFFER_TYPE>
     class Buffer {
     public:

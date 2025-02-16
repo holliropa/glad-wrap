@@ -1,5 +1,5 @@
 #pragma once
 
-#ifndef OGLWRAP_NAMESPACE
-    #define OGLWRAP_NAMESPACE glad
+#ifndef GLADWRAP_NAMESPACE
+    #define GLADWRAP_NAMESPACE glad
 #endif

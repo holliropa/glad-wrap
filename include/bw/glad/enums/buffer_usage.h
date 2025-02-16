@@ -2,7 +2,7 @@
 
 #include "../config.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     namespace enums {
         enum class BufferUsage : GLenum {
 #ifdef GL_STREAM_DRAW

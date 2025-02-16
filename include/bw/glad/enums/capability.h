@@ -2,7 +2,7 @@
 
 #include "../config.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     namespace enums {
         enum class Capability : GLenum {
 #ifdef GL_BLEND

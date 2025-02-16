@@ -3,7 +3,7 @@
 #include "config.h"
 #include "program.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     inline void Bind(const Program &program) {
         glUseProgram(static_cast<GLuint>(program.expose()));
     }

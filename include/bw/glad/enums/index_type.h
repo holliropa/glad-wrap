@@ -2,7 +2,7 @@
 
 #include "../config.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     namespace enums {
         enum class IndexType : GLenum {
 #ifdef GL_UNSIGNED_BYTE

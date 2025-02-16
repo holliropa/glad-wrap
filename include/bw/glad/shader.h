@@ -5,7 +5,7 @@
 #include "shader_handle.h"
 #include "enums/shader_type.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     class Shader {
     public:
         enum State {

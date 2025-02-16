@@ -3,7 +3,7 @@
 #include "config.h"
 #include "enums/capability.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     /// Enables a capability.
     /// @see glEnable
     inline void Enable(Capability capability) {

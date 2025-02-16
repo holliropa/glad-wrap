@@ -2,7 +2,7 @@
 
 #include "config.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     template<typename Bit>
     class Bitfield {
     public:

@@ -3,7 +3,7 @@
 #include "config.h"
 #include "vertex_array_handle.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     class VertexArray {
     public:
         VertexArray() = default;

@@ -3,7 +3,7 @@
 #include "config.h"
 #include "enums/data_type.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     class VertexAttribute {
     public:
         VertexAttribute(GLuint location)

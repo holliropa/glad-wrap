@@ -3,7 +3,7 @@
 #include "config.h"
 #include "handle.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     class VertexArrayHandle : public Handle {
     public:
         explicit VertexArrayHandle(GLuint handle) {

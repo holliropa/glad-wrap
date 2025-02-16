@@ -3,7 +3,7 @@
 #include "config.h"
 #include <utility>
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     class Handle {
     public:
         explicit operator GLuint() const { return handle_; }

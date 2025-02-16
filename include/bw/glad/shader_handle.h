@@ -4,7 +4,7 @@
 #include "handle.h"
 #include "enums/shader_type.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     class ShaderHandle : public Handle {
     public:
         explicit ShaderHandle(GLuint handle) {

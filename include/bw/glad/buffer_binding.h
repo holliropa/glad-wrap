@@ -5,7 +5,7 @@
 #include "enums/buffer_type.h"
 #include "enums/buffer_binding.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     template<BufferType BUFFER_TYPE>
     inline void Bind(const Buffer<BUFFER_TYPE> &buffer) {
         glBindBuffer(static_cast<GLenum>(BUFFER_TYPE), static_cast<GLuint>(buffer.expose()));

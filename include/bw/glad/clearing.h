@@ -4,7 +4,7 @@
 #include "bitfield.h"
 #include "enums/buffer_select_bit.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     inline void ClearColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a){
         glClearColor(r, g, b, a);
     }

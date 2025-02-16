@@ -2,7 +2,7 @@
 
 #include "../config.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     namespace enums {
         enum class BufferBinding : GLenum {
 #ifdef GL_ARRAY_BUFFER_BINDING

@@ -4,7 +4,7 @@
 #include "enums/primitive_type.h"
 #include "enums/index_type.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     inline void DrawElements(PrimitiveType type,
                              GLsizei count,
                              IndexType index_type

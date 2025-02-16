@@ -2,7 +2,7 @@
 
 #include "config.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     inline void Viewport(GLint x, GLint y, GLsizei w, GLsizei h) {
         glViewport(x, y, w, h);
     }

@@ -2,7 +2,7 @@
 
 #include "../config.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     namespace enums {
         enum class BufferSelectBit : GLenum {
 #ifdef GL_COLOR_BUFFER_BIT

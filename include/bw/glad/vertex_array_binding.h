@@ -3,7 +3,7 @@
 #include "config.h"
 #include "vertex_array.h"
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     inline void Bind(const VertexArray &vertexArray) {
         glBindVertexArray(static_cast<GLuint>(vertexArray.expose()));
     }

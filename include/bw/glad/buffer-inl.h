@@ -1,10 +1,10 @@
 #pragma once
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     template<BufferType BUFFER_TYPE>
-    void Buffer<BUFFER_TYPE>::data(GLsizei size,
-                                   const void *data,
-                                   BufferUsage usage) {
+    inline void Buffer<BUFFER_TYPE>::data(GLsizei size,
+                                          const void *data,
+                                          BufferUsage usage) {
         Bind(*this);
 
         glBufferData(static_cast<GLenum>(BUFFER_TYPE), size, data, static_cast<GLenum>(usage));
@@ -12,8 +12,8 @@ namespace OGLWRAP_NAMESPACE {
 
     template<BufferType BUFFER_TYPE>
     template<typename GLtype>
-    void Buffer<BUFFER_TYPE>::data(const std::vector<GLtype> &data,
-                                   BufferUsage usage) {
+    inline void Buffer<BUFFER_TYPE>::data(const std::vector<GLtype> &data,
+                                          BufferUsage usage) {
 
         Bind(*this);
 
@@ -24,7 +24,7 @@ namespace OGLWRAP_NAMESPACE {
     }
 
     template<BufferType BUFFER_TYPE>
-    GLint Buffer<BUFFER_TYPE>::size() const {
+    inline GLint Buffer<BUFFER_TYPE>::size() const {
         Bind(*this);
 
         GLint size;

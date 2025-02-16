@@ -5,7 +5,7 @@
 #include "program_handle.h"
 #include <stdexcept>
 
-namespace OGLWRAP_NAMESPACE {
+namespace GLADWRAP_NAMESPACE {
     class Program {
     public:
         enum State {
