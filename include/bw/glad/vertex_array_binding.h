@@ -12,7 +12,7 @@ namespace GLADWRAP_NAMESPACE {
         glBindVertexArray(0);
     }
 
-    bool IsBound(const VertexArray &vertexArray) {
+    inline bool IsBound(const VertexArray &vertexArray) {
         GLint vao;
         glGetIntegerv(GL_VERTEX_ARRAY_BINDING, &vao);
         return static_cast<GLuint>(vertexArray.expose()) == GLuint(vao);

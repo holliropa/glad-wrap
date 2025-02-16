@@ -12,7 +12,7 @@ namespace GLADWRAP_NAMESPACE {
         glUseProgram(0);
     }
 
-    bool IsBound(const Program &program) {
+    inline bool IsBound(const Program &program) {
         GLint current_program;
         glGetIntegerv(GL_CURRENT_PROGRAM, &current_program);
 
