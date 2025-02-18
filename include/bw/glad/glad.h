@@ -14,28 +14,14 @@
 #include "drawing.h"
 #include "vertex-attribute.h"
 #include "uniform.h"
+#include "blending.h"
 
 namespace GLADWRAP_NAMESPACE {
-    class GLAD {
-    private:
-        bool init_;
+    [[nodiscard]] inline bool load() {
+        return gladLoaderLoadGL();
+    }
 
-        explicit GLAD(bool init)
-                : init_(init) {}
-
-    public:
-        ~GLAD() {
-            gladLoaderUnloadGL();
-        }
-
-        [[nodiscard]] bool isInitialized() const {
-            return init_;
-        }
-
-        [[nodiscard]] friend GLAD init() {
-            return GLAD(gladLoaderLoadGL());
-        }
-    };
-
-    [[nodiscard]] inline GLAD init();
+    inline void unload() {
+        gladLoaderUnloadGL();
+    }
 }
