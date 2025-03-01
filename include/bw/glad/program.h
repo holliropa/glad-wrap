@@ -1,25 +1,26 @@
 #pragma once
 
-#include "config.h"
 #include "shader.h"
-#include "program_handle.h"
+#include "handles/program_handle.h"
 #include <stdexcept>
 
-namespace GLADWRAP_NAMESPACE {
+namespace glad {
     class Program {
     public:
+        virtual ~Program() = default;
+
         enum State {
             kNotLinked, kLinkFailure, kLinkSuccessful, kValidationFailure
         };
 
         Program() = default;
 
-        Program(Program &&) = default;
+        Program(Program&&) = default;
 
-        Program &operator=(Program &&) noexcept = default;
+        Program& operator=(Program&&) noexcept = default;
 
-        explicit Program(GLuint handle)
-                : program_{handle} {
+        explicit Program(const GLuint handle)
+            : program_{handle} {
             if (handle != 0) {
                 GLint status;
                 glGetProgramiv(static_cast<GLuint>(program_), GL_LINK_STATUS, &status);
@@ -29,22 +30,22 @@ namespace GLADWRAP_NAMESPACE {
             }
         };
 
-        template<typename... Rest>
-        Program &attach_shader(const Shader &shader, Rest &&... rest) {
+        template <typename... Rest>
+        Program& attach_shader(const Shader& shader, Rest&&... rest) {
             attach_shader(shader);
             attach_shader(rest...);
 
             return *this;
         }
 
-        Program &attach_shader() {
+        Program& attach_shader() {
             return *this;
         }
 
-        Program &attach_shader(const Shader &shader) {
+        Program& attach_shader(const Shader& shader) {
             if (state_ != kNotLinked) {
                 throw std::logic_error(
-                        "Program::attach_shader called on already linked program."
+                    "Program::attach_shader called on already linked program."
                 );
             }
 
@@ -55,9 +56,9 @@ namespace GLADWRAP_NAMESPACE {
             return *this;
         }
 
-        Program &attach_shader(Shader &&shader) = delete;
+        Program& attach_shader(Shader&& shader) = delete;
 
-        virtual const Program &link() {
+        virtual const Program& link() {
             if (state_ != kNotLinked)
                 return *this;
 
@@ -67,7 +68,8 @@ namespace GLADWRAP_NAMESPACE {
             glGetProgramiv(static_cast<GLuint>(program_), GL_LINK_STATUS, &status);
             if (status == GL_FALSE) {
                 state_ = kLinkFailure;
-            } else {
+            }
+            else {
                 state_ = kLinkSuccessful;
             }
 
@@ -76,7 +78,7 @@ namespace GLADWRAP_NAMESPACE {
 
         State state() const { return state_; }
 
-        const Handle &expose() const { return program_; }
+        const Handle& expose() const { return program_; }
 
     private:
         ProgramHandle program_;

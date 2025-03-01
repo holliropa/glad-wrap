@@ -1,11 +1,10 @@
 #pragma once
 
 #include <string>
-#include "config.h"
-#include "shader_handle.h"
+#include "handles/shader_handle.h"
 #include "enums/shader_type.h"
 
-namespace GLADWRAP_NAMESPACE {
+namespace glad {
     class Shader {
     public:
         enum State {
@@ -20,19 +19,19 @@ namespace GLADWRAP_NAMESPACE {
         mutable State state_ = kNotCompiled;
 
     public:
-        Shader(Shader &&) noexcept = default;
+        Shader(Shader&&) noexcept = default;
 
-        Shader &operator=(Shader &&) noexcept = default;
+        Shader& operator=(Shader&&) noexcept = default;
 
-        explicit Shader(ShaderType shader_t)
-                : shader_handle_(shader_t), shader_t_(shader_t) {};
+        explicit Shader(const ShaderType shader_t)
+            : shader_handle_(shader_t), shader_t_(shader_t) {};
 
         ShaderType shader_type() const { return shader_t_; }
 
         State state() const { return state_; }
 
-        void set_source(const std::string &source) {
-            auto str = source.c_str();
+        void set_source(const std::string& source) {
+            const auto str = source.c_str();
             glShaderSource(static_cast<GLuint>(shader_handle_), 1, &str, nullptr);
         }
 
@@ -47,38 +46,38 @@ namespace GLADWRAP_NAMESPACE {
             state_ = status == GL_TRUE ? kCompileSuccessful : kCompileFailure;
         }
 
-        const Handle &expose() const {
+        const Handle& expose() const {
             return shader_handle_;
         }
     };
 
     class ComputeShader : public Shader {
     public:
-        ComputeShader() : Shader(ShaderType::kComputeShader) {}
+        ComputeShader() : Shader(ShaderType::ComputeShader) {}
     };
 
     class VertexShader : public Shader {
     public:
-        VertexShader() : Shader(ShaderType::kVertexShader) {}
+        VertexShader() : Shader(ShaderType::VertexShader) {}
     };
 
     class GeometryShader : public Shader {
     public:
-        GeometryShader() : Shader(ShaderType::kGeometryShader) {}
+        GeometryShader() : Shader(ShaderType::GeometryShader) {}
     };
 
     class FragmentShader : public Shader {
     public:
-        FragmentShader() : Shader(ShaderType::kFragmentShader) {}
+        FragmentShader() : Shader(ShaderType::FragmentShader) {}
     };
 
     class TessControlShader : public Shader {
     public:
-        TessControlShader() : Shader(ShaderType::kTessControlShader) {}
+        TessControlShader() : Shader(ShaderType::TessControlShader) {}
     };
 
     class TessEvaluationShader : public Shader {
     public:
-        TessEvaluationShader() : Shader(ShaderType::kTessEvaluationShader) {}
+        TessEvaluationShader() : Shader(ShaderType::TessEvaluationShader) {}
     };
 }

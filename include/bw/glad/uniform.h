@@ -1,21 +1,19 @@
 #pragma once
 
-#include "config.h"
 #include "enums/boolean.h"
-#include <type_traits>
 
-namespace GLADWRAP_NAMESPACE {
+namespace glad {
     class UniformObject {
     protected:
         GLint location_;
 
     public:
-        static const GLint kInvalidLocation = GLint(-1);
+        static constexpr GLint kInvalidLocation = -1;
 
-        explicit UniformObject(GLint location = kInvalidLocation)
-                : location_(location) {}
+        explicit UniformObject(const GLint location = kInvalidLocation)
+            : location_(location) {}
 
-        UniformObject(const Program &program, const char *qualifier) {
+        UniformObject(const Program& program, const char* qualifier) {
             location_ = glGetUniformLocation(static_cast<GLuint>(program.expose()), qualifier);
         }
 
@@ -52,7 +50,7 @@ namespace GLADWRAP_NAMESPACE {
         Uniform##TYPE_ENUM(const Program& program,                                      \
                            const char* qualifier)                                       \
             : UniformObject(program, qualifier) {}                                      \
-        void set(const TYPE_GL* value, Boolean transpose = Boolean::kFalse) {           \
+        void set(const TYPE_GL* value, Boolean transpose = Boolean::False) {           \
             if (this->isValid()) {                                                      \
                 GL_FUNC(location_, SIZE, static_cast<GLboolean>(transpose), value);     \
             }                                                                           \

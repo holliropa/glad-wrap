@@ -3,9 +3,8 @@
 
 namespace glad {
     namespace enums {
-        enum class Boolean : GLboolean {
-            True  = GL_TRUE,
-            False = GL_FALSE,
+        enum class TextureType : GLenum {
+            Texture2D = GL_TEXTURE_2D,
         };
     }
 

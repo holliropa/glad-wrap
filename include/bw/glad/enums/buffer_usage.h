@@ -1,37 +1,18 @@
 #pragma once
 
-#include "../config.h"
 
-namespace GLADWRAP_NAMESPACE {
+namespace glad {
     namespace enums {
         enum class BufferUsage : GLenum {
-#ifdef GL_STREAM_DRAW
-            kStreamDraw = GL_STREAM_DRAW,
-#endif
-#ifdef GL_STREAM_READ
-            kStreamRead = GL_STREAM_READ,
-#endif
-#ifdef GL_STREAM_COPY
-            kStreamCopy = GL_STREAM_COPY,
-#endif
-#ifdef GL_STATIC_DRAW
-            kStaticDraw = GL_STATIC_DRAW,
-#endif
-#ifdef GL_STATIC_READ
-            kStaticRead = GL_STATIC_READ,
-#endif
-#ifdef GL_STATIC_COPY
-            kStaticCopy = GL_STATIC_COPY,
-#endif
-#ifdef GL_DYNAMIC_DRAW
-            kDynamicDraw = GL_DYNAMIC_DRAW,
-#endif
-#ifdef GL_DYNAMIC_READ
-            kDynamicRead = GL_DYNAMIC_READ,
-#endif
-#ifdef GL_DYNAMIC_COPY
-            kDynamicCopy = GL_DYNAMIC_COPY,
-#endif
+            StreamDraw  = GL_STREAM_DRAW,
+            StreamRead  = GL_STREAM_READ,
+            StreamCopy  = GL_STREAM_COPY,
+            StaticDraw  = GL_STATIC_DRAW,
+            StaticRead  = GL_STATIC_READ,
+            StaticCopy  = GL_STATIC_COPY,
+            DynamicDraw = GL_DYNAMIC_DRAW,
+            DynamicRead = GL_DYNAMIC_READ,
+            DynamicCopy = GL_DYNAMIC_COPY,
         };
     }
 

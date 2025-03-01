@@ -1,9 +1,8 @@
 #pragma once
 
-#include "config.h"
-#include "vertex_array_handle.h"
+#include "handles/vertex_array_handle.h"
 
-namespace GLADWRAP_NAMESPACE {
+namespace glad {
     class VertexArray {
     public:
         VertexArray() = default;
@@ -12,7 +11,7 @@ namespace GLADWRAP_NAMESPACE {
 
         VertexArray &operator=(VertexArray &&) noexcept = delete;
 
-        explicit VertexArray(GLuint handle) : handle_{handle} {}
+        explicit VertexArray(const GLuint handle) : handle_{handle} {}
 
         [[nodiscard]] const Handle &expose() const { return handle_; }
 

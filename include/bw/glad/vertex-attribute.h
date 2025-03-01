@@ -1,19 +1,18 @@
 #pragma once
 
-#include "config.h"
 #include "enums/data_type.h"
 
-namespace GLADWRAP_NAMESPACE {
+namespace glad {
     class VertexAttribute {
     public:
-        VertexAttribute(GLuint location)
-                : location_(location) {}
+        explicit VertexAttribute(GLuint location)
+            : location_(location) {}
 
-        VertexAttribute &pointer(GLuint values_per_vertex,
+        VertexAttribute& pointer(const GLint values_per_vertex,
                                  DataType type,
-                                 bool normalized,
-                                 GLsizei stride,
-                                 const void *offset_pointer = nullptr) {
+                                 const bool normalized,
+                                 const GLsizei stride,
+                                 const void* offset_pointer = nullptr) {
             glVertexAttribPointer(location_,
                                   values_per_vertex,
                                   static_cast<GLenum>(type),
@@ -24,13 +23,13 @@ namespace GLADWRAP_NAMESPACE {
             return *this;
         }
 
-        VertexAttribute &enable() {
+        VertexAttribute& enable() {
             glEnableVertexAttribArray(location_);
 
             return *this;
         }
 
-        VertexAttribute &disable() {
+        VertexAttribute& disable() {
             glDisableVertexAttribArray(location_);
 
             return *this;

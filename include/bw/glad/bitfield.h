@@ -1,23 +1,31 @@
 #pragma once
 
-#include "config.h"
 
-namespace GLADWRAP_NAMESPACE {
-    template<typename Bit>
+namespace glad {
+    template <typename Bit>
     class Bitfield {
     public:
         Bitfield() : bits_{0} {}
 
-        Bitfield(GLbitfield bits) : bits_(bits) {}
+        explicit Bitfield(const GLbitfield bits) : bits_(bits) {}
 
-        Bitfield(Bit bit) : bits_(GLbitfield(bit)) {}
+        explicit Bitfield(Bit bit) : bits_(static_cast<GLbitfield>(bit)) {}
 
         Bitfield operator|(Bit b) const {
             return Bitfield{bits_ | static_cast<GLbitfield>(b)};
         }
 
-        Bitfield &operator|=(Bitfield b) {
-            bits_ |= b.bits_;
+        Bitfield operator|(const Bitfield& other) {
+            return Bitfield{bits_ | other.bits_};
+        }
+
+        Bitfield& operator|=(Bit b) {
+            bits_ |= static_cast<GLbitfield>(b);
+            return *this;
+        }
+
+        Bitfield& operator|=(const Bitfield& other) {
+            bits_ |= other.bits_;
             return *this;
         }
 

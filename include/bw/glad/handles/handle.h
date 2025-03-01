@@ -1,25 +1,24 @@
 #pragma once
 
-#include "config.h"
 #include <utility>
 
-namespace GLADWRAP_NAMESPACE {
+namespace glad {
     class Handle {
     public:
         explicit operator GLuint() const { return handle_; }
 
-        Handle(const Handle &) = delete;
+        Handle(const Handle&) = delete;
 
-        Handle &operator=(const Handle &) = delete;
+        Handle& operator=(const Handle&) = delete;
 
-        Handle(Handle &&other) noexcept
-                : handle_{other.handle_},
-                  ownership_{other.ownership_} {
+        Handle(Handle&& other) noexcept
+            : handle_{other.handle_},
+              ownership_{other.ownership_} {
             other.handle_ = 0;
             other.ownership_ = false;
         }
 
-        Handle &operator=(Handle &&other) noexcept {
+        Handle& operator=(Handle&& other) noexcept {
             handle_ = std::exchange(other.handle_, 0);
             ownership_ = std::exchange(other.ownership_, false);
 
@@ -28,7 +27,7 @@ namespace GLADWRAP_NAMESPACE {
 
         virtual ~Handle() = default;
 
-        [[nodiscard]]bool hasOwnership() const { return ownership_; }
+        [[nodiscard]] bool hasOwnership() const { return ownership_; }
 
     protected:
         GLuint handle_ = 0;

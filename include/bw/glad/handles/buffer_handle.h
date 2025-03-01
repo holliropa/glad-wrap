@@ -1,12 +1,11 @@
 #pragma once
 
-#include "config.h"
 #include "handle.h"
 
-namespace GLADWRAP_NAMESPACE {
+namespace glad {
     class BufferHandle : public Handle {
     public:
-        explicit BufferHandle(GLuint handle) {
+        explicit BufferHandle(const GLuint handle) {
             handle_ = handle;
             ownership_ = false;
         }
@@ -22,8 +21,8 @@ namespace GLADWRAP_NAMESPACE {
             }
         }
 
-        BufferHandle(BufferHandle &&) noexcept = default;
+        BufferHandle(BufferHandle&&) noexcept = default;
 
-        BufferHandle &operator=(BufferHandle &&) noexcept = default;
+        BufferHandle& operator=(BufferHandle&&) noexcept = default;
     };
 }

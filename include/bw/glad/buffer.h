@@ -1,54 +1,66 @@
 #pragma once
 
 #include <vector>
-#include "config.h"
-#include "buffer_handle.h"
+#include "handles/buffer_handle.h"
 #include "enums/buffer_type.h"
 #include "enums/buffer_usage.h"
 
-namespace GLADWRAP_NAMESPACE {
-    template<BufferType BUFFER_TYPE>
+namespace glad {
+    template <BufferType BUFFER_TYPE>
     class Buffer {
     public:
-        [[nodiscard]] constexpr BufferType type() const { return BUFFER_TYPE; }
+        [[nodiscard]] static constexpr BufferType type() { return BUFFER_TYPE; }
 
         Buffer() = default;
 
-        Buffer(Buffer &&) noexcept = default;
+        Buffer(Buffer&&) noexcept = default;
 
-        Buffer &operator=(Buffer &&) noexcept = default;
+        Buffer& operator=(Buffer&&) noexcept = default;
 
-        explicit Buffer(GLuint handle) : handle_{handle} {}
+        explicit Buffer(const GLuint handle) : handle_{handle} {}
 
-        void data(GLsizei size,
-                  const void *data,
-                  BufferUsage usage = BufferUsage::kStaticDraw);
+        void data(const GLsizei size,
+                  const void* data,
+                  BufferUsage usage = BufferUsage::StaticDraw) {
+            Bind(*this);
+            glBufferData(static_cast<GLenum>(BUFFER_TYPE), size, data, static_cast<GLenum>(usage));
+        }
 
-        template<typename GLtype>
+        template <typename GLtype>
         void data(const std::vector<GLtype>& data,
-                  BufferUsage usage = BufferUsage::kStaticDraw);
+                  BufferUsage usage = BufferUsage::StaticDraw) {
+            Bind(*this);
+            glBufferData(static_cast<GLenum>(BUFFER_TYPE),
+                         data.size() * sizeof(GLtype),
+                         data.data(),
+                         static_cast<GLenum>(usage));
+        }
 
-        [[nodiscard]] GLint size() const;
+        [[nodiscard]] GLint size() const {
+            Bind(*this);
 
-        [[nodiscard]] const Handle &expose() const { return handle_; }
+            GLint size;
+            glGetBufferParameteriv(static_cast<GLenum>(BUFFER_TYPE), GL_BUFFER_SIZE, &size);
+            return size;
+        }
+
+        [[nodiscard]] const Handle& expose() const { return handle_; }
 
     private:
         BufferHandle handle_;
     };
 
-    using ArrayBuffer = Buffer<BufferType::kArray>;
-    using AtomicCounterBuffer = Buffer<BufferType::kAtomicCounter>;
-    using CopyReadBuffer = Buffer<BufferType::kCopyRead>;
-    using CopyWriteBuffer = Buffer<BufferType::kCopyWrite>;
-    using DispatchIndirectBuffer = Buffer<BufferType::kDispatchIndirect>;
-    using DrawIndirectBuffer = Buffer<BufferType::kDrawIndirect>;
-    using ElementArrayBuffer = Buffer<BufferType::kElementArray>;
-    using PixelPackBuffer = Buffer<BufferType::kPixelPack>;
-    using PixelUnpackBuffer = Buffer<BufferType::kPixelUnpack>;
-    using ShaderStorageBuffer = Buffer<BufferType::kShaderStorage>;
-    using TextureBuffer = Buffer<BufferType::kTexture>;
-    using TransformFeedbackBuffer = Buffer<BufferType::kTransformFeedback>;
-    using UniformBuffer = Buffer<BufferType::kUniform>;
+    using ArrayBuffer = Buffer<BufferType::Array>;
+    using AtomicCounterBuffer = Buffer<BufferType::AtomicCounter>;
+    using CopyReadBuffer = Buffer<BufferType::CopyRead>;
+    using CopyWriteBuffer = Buffer<BufferType::CopyWrite>;
+    using DispatchIndirectBuffer = Buffer<BufferType::DispatchIndirect>;
+    using DrawIndirectBuffer = Buffer<BufferType::DrawIndirect>;
+    using ElementArrayBuffer = Buffer<BufferType::ElementArray>;
+    using PixelPackBuffer = Buffer<BufferType::PixelPack>;
+    using PixelUnpackBuffer = Buffer<BufferType::PixelUnpack>;
+    using ShaderStorageBuffer = Buffer<BufferType::ShaderStorage>;
+    using TextureBuffer = Buffer<BufferType::Texture>;
+    using TransformFeedbackBuffer = Buffer<BufferType::TransformFeedback>;
+    using UniformBuffer = Buffer<BufferType::Uniform>;
 }
-
-#include "buffer-inl.h"

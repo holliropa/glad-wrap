@@ -1,19 +1,18 @@
 #pragma once
 
-#include "config.h"
 #include "handle.h"
-#include "enums/shader_type.h"
+#include "../enums/shader_type.h"
 
-namespace GLADWRAP_NAMESPACE {
+namespace glad {
     class ShaderHandle : public Handle {
     public:
-        explicit ShaderHandle(GLuint handle) {
+        explicit ShaderHandle(const GLuint handle) {
             handle_ = handle;
             ownership_ = false;
         }
 
         explicit ShaderHandle(ShaderType shader_t) {
-            handle_ = glCreateShader(GLenum(shader_t));
+            handle_ = glCreateShader(static_cast<GLenum>(shader_t));
             ownership_ = true;
         }
 

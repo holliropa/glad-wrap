@@ -1,12 +1,11 @@
 #pragma once
 
-#include "config.h"
 #include "handle.h"
 
-namespace GLADWRAP_NAMESPACE {
+namespace glad {
     class ProgramHandle : public Handle {
     public:
-        explicit ProgramHandle(GLuint handle) {
+        explicit ProgramHandle(const GLuint handle) {
             handle_ = handle;
             ownership_ = false;
         }
@@ -22,8 +21,8 @@ namespace GLADWRAP_NAMESPACE {
             }
         }
 
-        ProgramHandle(ProgramHandle &&) noexcept = default;
+        ProgramHandle(ProgramHandle&&) noexcept = default;
 
-        ProgramHandle &operator=(ProgramHandle &&) noexcept = default;
+        ProgramHandle& operator=(ProgramHandle&&) noexcept = default;
     };
 }

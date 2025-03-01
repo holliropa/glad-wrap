@@ -1,12 +1,11 @@
 #pragma once
 
-#include "config.h"
 #include "handle.h"
 
-namespace GLADWRAP_NAMESPACE {
+namespace glad {
     class VertexArrayHandle : public Handle {
     public:
-        explicit VertexArrayHandle(GLuint handle) {
+        explicit VertexArrayHandle(const GLuint handle) {
             handle_ = handle;
             ownership_ = false;
         }
@@ -22,8 +21,8 @@ namespace GLADWRAP_NAMESPACE {
             }
         }
 
-        VertexArrayHandle(VertexArrayHandle &&) noexcept = default;
+        VertexArrayHandle(VertexArrayHandle&&) noexcept = default;
 
-        VertexArrayHandle &operator=(VertexArrayHandle &&) noexcept = default;
+        VertexArrayHandle& operator=(VertexArrayHandle&&) noexcept = default;
     };
 }

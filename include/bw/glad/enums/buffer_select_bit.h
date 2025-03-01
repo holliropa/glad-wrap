@@ -1,19 +1,12 @@
 #pragma once
 
-#include "../config.h"
 
-namespace GLADWRAP_NAMESPACE {
+namespace glad {
     namespace enums {
         enum class BufferSelectBit : GLenum {
-#ifdef GL_COLOR_BUFFER_BIT
-            kColorBufferBit = GL_COLOR_BUFFER_BIT,
-#endif
-#ifdef GL_DEPTH_BUFFER_BIT
-            kDepthBufferBit = GL_DEPTH_BUFFER_BIT,
-#endif
-#ifdef GL_STENCIL_BUFFER_BIT
-            kStencilBufferBit = GL_STENCIL_BUFFER_BIT,
-#endif
+            ColorBufferBit   = GL_COLOR_BUFFER_BIT,
+            DepthBufferBit   = GL_DEPTH_BUFFER_BIT,
+            StencilBufferBit = GL_STENCIL_BUFFER_BIT,
         };
     }
 
