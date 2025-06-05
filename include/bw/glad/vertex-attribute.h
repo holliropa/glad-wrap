@@ -5,7 +5,7 @@
 namespace glad {
     class VertexAttribute {
     public:
-        explicit VertexAttribute(GLuint location)
+        explicit VertexAttribute(const GLuint location)
             : location_(location) {}
 
         VertexAttribute& pointer(const GLint values_per_vertex,
@@ -19,6 +19,12 @@ namespace glad {
                                   normalized ? GL_TRUE : GL_FALSE,
                                   stride,
                                   offset_pointer);
+
+            return *this;
+        }
+
+        VertexAttribute& divisor(const GLuint divisor) {
+            glVertexAttribDivisor(location_, divisor);
 
             return *this;
         }

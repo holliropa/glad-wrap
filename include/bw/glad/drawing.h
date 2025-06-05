@@ -23,4 +23,16 @@ namespace glad {
     ) {
         glDrawElements(static_cast<GLenum>(type), count, static_cast<GLenum>(index_type), nullptr);
     }
+
+    inline void DrawElementsInstanced(PrimitiveType type,
+                                      const GLsizei count,
+                                      IndexType index_type,
+                                      const GLsizei instance_count
+    ) {
+        glDrawElementsInstanced(static_cast<GLenum>(type),
+                                count,
+                                static_cast<GLenum>(index_type),
+                                nullptr,
+                                instance_count);
+    }
 }
