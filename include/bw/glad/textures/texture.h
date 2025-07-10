@@ -7,17 +7,26 @@
 #include "../enums/mag_filter.h"
 
 namespace glad {
-    template <TextureType TEXTURE_TYPE>
-    class Texture {
+    class TextureBase {
     public:
-        Texture() = default;
+        TextureBase() = default;
 
-        Texture(Texture&&) noexcept = default;
+        TextureBase(TextureBase&&) noexcept = default;
 
-        Texture& operator=(Texture&&) noexcept = default;
+        TextureBase& operator=(TextureBase&&) noexcept = default;
 
-        explicit Texture(const GLuint handle) : handle_{handle} {}
+        explicit TextureBase(const GLuint handle) : handle_{handle} {}
 
+
+        [[nodiscard]] const Handle& expose() const { return handle_; }
+
+    protected:
+        TextureHandle handle_;
+    };
+
+    template <TextureType TEXTURE_TYPE>
+    class Texture : public TextureBase {
+    public:
         void generateMipmap() {
             glGenerateMipmap(static_cast<GLenum>(TEXTURE_TYPE));
         }
@@ -51,10 +60,5 @@ namespace glad {
                             GL_TEXTURE_MAG_FILTER,
                             static_cast<GLenum>(mag_filter));
         }
-
-        [[nodiscard]] const Handle& expose() const { return handle_; }
-
-    protected:
-        TextureHandle handle_;
     };
 }

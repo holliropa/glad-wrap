@@ -1,19 +1,21 @@
 #pragma once
 
-#include "capabilities.h"
-#include "shader.h"
-#include "program.h"
-#include "viewport.h"
-#include "clearing.h"
-#include "vertex_array.h"
-#include "buffer.h"
-#include "drawing.h"
-#include "vertex-attribute.h"
-#include "uniform.h"
+#include "bindings.h"
 #include "blending.h"
+#include "buffer.h"
+#include "capabilities.h"
+#include "clearing.h"
+#include "drawing.h"
+#include "framebuffer.h"
+#include "program.h"
 #include "rasterization.h"
+#include "renderbuffer.h"
+#include "shader.h"
 #include "texture.h"
-#include "binding.h"
+#include "uniform.h"
+#include "vertex_array.h"
+#include "vertex_attribute.h"
+#include "viewport.h"
 
 namespace glad {
     [[nodiscard]] inline bool load() {

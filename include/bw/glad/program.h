@@ -5,7 +5,7 @@
 #include <stdexcept>
 
 namespace glad {
-    class Program {
+    class Program final {
     public:
         virtual ~Program() = default;
 

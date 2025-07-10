@@ -22,6 +22,9 @@ namespace glad {
             RGB            = GL_RGB,
             RGBA           = GL_RGBA,
 
+            // TODO Refer to above explanation. Done for renderbuffer only
+            Depth24Stencil8 = GL_DEPTH24_STENCIL8,
+
             // Sized Internal Format
             // R8       = GL_R8,
             // R8_SNORM = GL_R8_SNORM,
